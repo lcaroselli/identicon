@@ -32,13 +32,13 @@ defmodule Identicon do
     %Identicon.Image{image | color: {r, g, b}}
   end
 
-  def build_grid(%Identicon.Image{hex: hex} = image) do
+  def build_grid(%Identicon.Image{hex: hex} = _image) do
     hex
-    |> Enum.chunk(3)
-    |> mirror_row
+    |> Enum.chunk_every(3, 3, :discard)
+    |> Enum.map(&mirror_row/1)
   end
 
-  def mirror_row(chunked_list) do
-    :ok
+  def mirror_row([first, second | _rest] = row) do
+    row ++ [second, first]
   end
 end
