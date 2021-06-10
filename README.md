@@ -1,6 +1,6 @@
 # Identicon
 
-**TODO: Add description**
+Image manipulation in Elixir!
 
 ## Installation
 
